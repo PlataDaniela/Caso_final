@@ -13,7 +13,7 @@ Este trabajo fue desarrollado como parte del curso Analítica de Negocios en la 
 
 ## Derechos de autor
 
-©2025 Daniela Plata, Lucía Ballesteros y [Nombre del tercer integrante].
+©2025 Daniela Plata y Lucía Ballesteros.
 Este repositorio ha sido creado con fines académicos y no representa un aval ni un juicio sobre el material incluido.
 
 # RESUMEN
