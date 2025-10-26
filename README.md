@@ -1,81 +1,86 @@
 # Predicción y prevención de la deserción de clientes en QWE Inc.
 
-POR DANIELA PLATA Y  LUCÍA BALLESTEROS 
+POR **DANIELA PLATA** Y **LUCÍA BALLESTEROS**
 
 ## Afiliación académica
-
-Estudiante, Pontificia Universidad Javeriana
-Estudiante, Pontificia Universidad Javeriana
+Estudiante, Pontificia Universidad Javeriana  
+Estudiante, Pontificia Universidad Javeriana  
 
 ## Agradecimientos
-
-Este trabajo fue desarrollado como parte del curso Analítica de Negocios en la Pontificia Universidad Javeriana.
+Este trabajo fue desarrollado como parte del curso **Analítica de Negocios** en la Pontificia Universidad Javeriana.
 
 ## Derechos de autor
-
-©2025 Daniela Plata y Lucía Ballesteros.
+©2025 Daniela Plata y Lucía Ballesteros.  
 Este repositorio ha sido creado con fines académicos y no representa un aval ni un juicio sobre el material incluido.
+
+---
 
 # RESUMEN
 
-QWE Inc. es una empresa que ofrece servicios de suscripción orientados a ayudar a pequeñas y medianas empresas a gestionar su presencia en línea. Durante sus primeros años, la compañía creció con rapidez, pero posteriormente surgió la necesidad de analizar los factores que influían en la retención y deserción de clientes.
+**QWE Inc.** es una empresa que ofrece servicios de suscripción dirigidos a pequeñas y medianas empresas para fortalecer su presencia digital. En los últimos años, la compañía identificó una disminución en la retención de clientes, por lo que se propuso analizar los factores que influyen en la **deserción (churn)** y construir un modelo predictivo capaz de anticipar este comportamiento.
 
-Hasta 2012, QWE adoptaba un enfoque reactivo ante la pérdida de clientes, ofreciendo descuentos o beneficios cuando estos solicitaban cancelar sus servicios. Sin embargo, la dirección propuso implementar un enfoque proactivo, capaz de anticipar qué clientes tenían mayor probabilidad de abandonar la empresa y cuáles eran las variables más determinantes en su decisión.
+Para este caso, se utilizó una base de datos con **6.347 observaciones** que contiene variables como:
 
-Para este propósito, se utilizó una base de datos con información de 6.000 clientes, que incluye variables como:
++ **Customer Age:** antigüedad del cliente en meses.  
++ **CHI Score:** índice de felicidad del cliente.  
++ **Support Cases:** número de casos de soporte reportados.  
++ **Logins:** cantidad de inicios de sesión recientes.  
++ **Otras variables** relacionadas con interacción y actividad en la plataforma.
 
-+ Antigüedad del cliente (en meses).
+El objetivo del análisis fue **estimar un modelo logit** que permita predecir la probabilidad de deserción (`Churn = 1`) en función de las características observadas del cliente.  
+El modelo identificó que el **CHI Score** es la variable más significativa y con signo negativo, lo que indica que a mayor satisfacción, menor probabilidad de abandono.  
+Por otro lado, la **antigüedad del cliente** mostró una relación positiva con la deserción, sugiriendo un posible desgaste en la relación a largo plazo.
 
-+ Índice de felicidad del cliente (CHI).
+El modelo obtuvo un **Pseudo R² (McFadden) de 0.0276** y una **precisión del 94.9%**, lo que refleja un buen desempeño general, aunque condicionado al desbalance de clases (más clientes que permanecen que los que desertan).
 
-+ Número y prioridad de casos de soporte.
+---
 
-+ Actividad de uso (inicios de sesión, blogs publicados, visualizaciones, días desde el último acceso).
+# CONTENIDO DEL REPOSITORIO
 
-El caso busca estimar un modelo de probabilidad binaria (logit, probit o MPL) para predecir la probabilidad de deserción de un cliente en los próximos dos meses, utilizando las características observadas. Además, el análisis incluye la interpretación de los coeficientes, la evaluación del ajuste del modelo y una valoración sobre su capacidad predictiva.
+### Datos
+Contiene la base de datos `DATA.xlsx` (hoja *Case Data*) con la información de los clientes de QWE Inc.
 
-# CONTENIDO
+### Resultados
+Incluye el informe final en formato PDF con:
++ Tabla descriptiva de las variables.  
++ Tabla de regresión del modelo logit exportada en `.png`.  
++ Interpretación de los coeficientes relevantes.  
++ Evaluación del modelo mediante pseudo R² y matriz de confusión.
 
-Carpeta Datos: Contiene la base de datos utilizada con las observaciones de 6.000 clientes de QWE Inc.
+### Gráficas
+Contiene las visualizaciones generadas en el análisis:
++ `Tabla_Descriptiva.png` — resumen estadístico de las variables.  
++ `Tabla_Logit.png` — resultados del modelo logit.  
++ `Grafico_Predicciones.png` — distribución de las probabilidades predichas por clase.
 
-+ Carpeta Resultados: Incluye el informe en formato PDF con:
+### Script
+Incluye los archivos `.R` empleados para el procesamiento, modelado y visualización:
++ `Tabla.r` — script descriptivo con medidas estadísticas y tabla resumen.  
++ `Modelo.r` — estimación del modelo logit, métricas de evaluación y exportación de resultados.
 
-  Una tabla descriptiva de los datos.
+---
 
-  Una tabla de regresión correctamente exportada.
+# LENGUAJE
 
-  La interpretación de al menos dos betas relevantes.
+El proyecto fue desarrollado en **R**, un entorno especializado en análisis estadístico y modelado de datos.
 
-  La evaluación del modelo (R², errores y comparación entre valores predichos y reales).
+R se utilizó para:
++ Calcular medidas descriptivas de las variables.  
++ Estimar un **modelo logit** para predecir la deserción de clientes.  
++ Exportar tablas y gráficos con formato profesional (`.png`).  
++ Evaluar la capacidad predictiva del modelo mediante métricas como el **Pseudo R²** y la **matriz de confusión**.
 
-+ Carpeta Gráficas: Contiene imágenes (.png) con las visualizaciones elaboradas durante el análisis, incluyendo distribuciones, relaciones entre variables y gráficos de error.
+---
 
-+ Carpeta Scripts: Contiene los archivos .R utilizados para procesar la base de datos, estimar el modelo, generar tablas y visualizar los resultados.
+# LIBRERÍAS UTILIZADAS
 
-## Lenguaje
++ **readxl** — Importación de bases de datos desde Excel.  
++ **dplyr** — Limpieza, transformación y manipulación de datos.  
++ **broom** — Conversión de resultados de modelos en tablas.  
++ **gt** — Creación y exportación de tablas con formato profesional.  
++ **stargazer** — Generación de tablas de regresión.  
++ **pscl** — Cálculo del Pseudo R² (McFadden).  
++ **caret** — Creación de la matriz de confusión y métricas de desempeño.  
++ **ggplot2** — Elaboración de gráficos estadísticos.  
++ **webshot2** — Conversión de tablas HTML a imágenes (`.png`) para su presentación.
 
-El proyecto está desarrollado en R, un lenguaje y entorno especializado en análisis estadístico, visualización y modelado de datos.
-
-En este repositorio, R se utilizó principalmente para:
-
-+  medidas descriptivas de las variables.
-
-+ Estimar el modelo logit, probit o MPL.
-
-+ Exportar tablas y gráficos con formato profesional.
-
-+ Evaluar la capacidad predictiva del modelo mediante métricas estadísticas.
-
-## Librerías
-
-El proyecto hace uso de las siguientes librerías:
-
-+ tidyverse: Conjunto de paquetes integrados (como dplyr, ggplot2, tidyr) para manipulación y visualización de datos.
-
-+ readxl: Permite importar archivos de Excel directamente a R.
-
-+ stargazer o gt: Para generar tablas de regresión y resultados con formato profesional.
-
-+ dplyr: Para filtrar, seleccionar y transformar datos.
-
-+ ggplot2: Para elaborar gráficos estadísticos y visualizaciones limpias.
