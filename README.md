@@ -1,8 +1,8 @@
-#Predicción y prevención de la deserción de clientes en QWE Inc.
+# Predicción y prevención de la deserción de clientes en QWE Inc.
 
 POR DANIELA PLATA Y  LUCÍA BALLESTEROS 
 
-##Afiliación académica
+## Afiliación académica
 
 Estudiante, Pontificia Universidad Javeriana
 Estudiante, Pontificia Universidad Javeriana
